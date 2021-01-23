@@ -36,7 +36,7 @@ public class Item {
     }
 
 
-    @Override
+    @Override   //for file reading test
     public String toString() {
         return "produto: " + getName() + "  qtde: " + getAmount() + "   preço: " + getPrice() + "\n";
     }
