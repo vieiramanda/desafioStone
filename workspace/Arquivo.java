@@ -7,13 +7,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+//this class makes the reading files
 public class Arquivo{
 
     public static List<Item> readItems(String pathItems) {
             
         String name;
         int n, price;           //auxiliar variables
-        String linha;           
+        String line;           
         String palavras[];      
 
         List<Item> temp = new ArrayList<>();
@@ -22,16 +23,16 @@ public class Arquivo{
         
             FileReader reader = new FileReader(pathItems);
             BufferedReader buffer = new BufferedReader(reader);
-            linha = "";
+            line = "";
             try {
                 
-                linha = buffer.readLine();
+                line = buffer.readLine();
                 
-                while (linha != null) {
-                    //System.out.println(linha);
+                while (line != null) {
+                    //System.out.println(line);
 
                     //spliting the line's data
-                    palavras = linha.split("/");
+                    palavras = line.split("/");
                     name = palavras[0];
                     n = Integer.parseInt(palavras[1]);
                     price = Integer.parseInt(palavras[2]);
@@ -40,7 +41,7 @@ public class Arquivo{
                     Item item = new Item(name, n, price);
                     temp.add(item);
                    
-                    linha = buffer.readLine();
+                    line = buffer.readLine();
                 }
 
                 reader.close();               
@@ -58,11 +59,42 @@ public class Arquivo{
     }
 
 
-    /* public static List<String> readEmails(String pathEmails) {
-        List<String> temp;
+    public static List<String> readEmails(String pathEmails) {
+        
+        // auxiliar variables
+        List<String>  temp = new ArrayList<>();
+        String email;
+          
 
+        try {
+
+            FileReader reader = new FileReader(pathEmails);
+            BufferedReader buffer = new BufferedReader(reader);
+            email = "";
+            try {
+
+                email = buffer.readLine();
+
+                while (email != null) {
+                    //System.out.println(email);  //test
+
+                    // building the list to be returned
+                    temp.add(email);
+                    
+                    email = buffer.readLine();
+                }
+
+                reader.close();
+
+            } catch (IOException ex) {
+                System.out.println("Erro: nao foi possivel ler o arquivo");
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Erro: arquivo não encontrado!");
+        }
 
         return temp;
-    } */
+    }
 
 }
