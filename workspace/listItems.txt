@@ -1,5 +1,5 @@
-sabonete/53/275
-pasta de dente/40/350
-arroz/100/265
-feijão/200/300
-macarrão/72/150
+sabonete/10/200
+pasta de dente/10/300
+arroz/10/100
+feijão/10/300
+macarrão/10/100
