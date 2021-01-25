@@ -29,7 +29,6 @@ public class Arquivo{
                 line = buffer.readLine();
                 
                 while (line != null) {
-                    //System.out.println(line);
 
                     //spliting the line's data
                     palavras = line.split("/");
@@ -58,13 +57,11 @@ public class Arquivo{
 
     }
 
-
     public static List<String> readEmails(String pathEmails) {
         
         // auxiliar variables
         List<String>  temp = new ArrayList<>();
-        String email;
-          
+        String email;          
 
         try {
 
@@ -76,11 +73,8 @@ public class Arquivo{
                 email = buffer.readLine();
 
                 while (email != null) {
-                    //System.out.println(email);  //test
-
                     // building the list to be returned
                     temp.add(email);
-                    
                     email = buffer.readLine();
                 }
 
