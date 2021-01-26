@@ -37,26 +37,21 @@ public class Desafio{
                         //generating emails list:
                         emailsList = Arquivo.readEmails(pathEmails);
                         
-                        if (itemsList.isEmpty()){
+                        if (emailsList.isEmpty()){
                             System.out.println("Lista de emails vazia! Informe uma lista válida.");
                             break;
 
                         }else{
-                            //test
-                            //int nEmails = emailsList.size();
-                            //System.out.println("emails = " + nEmails);
-
 
                             //calculating                               
                             finalResult = Desafio.calculate(itemsList, emailsList);                          
                             
+                            //printing the result
                             for (String key : finalResult.keySet()) {
                                 int value = finalResult.get(key);
                                 System.out.println(key + " = " + value + " centavos");
                             }
-                            
-                            //System.out.println(finalResult);
-                    
+
                         }                        
                     
                     }                    
@@ -82,16 +77,33 @@ public class Desafio{
 
         value = total/totalEmails;
 
-        for (int i = 0; i < emails.size(); i++) {            
-            
-            if (total % totalEmails != 0 && i == emails.size()-1) {
-                value += 1;
-            }
-            
-            //building the map
+        //building the map 
+        for (int i = 0; i < emails.size(); i++)
             map.put(emails.get(i), value);
+        
+        if (total % totalEmails != 0) {       
+            int rest = total % totalEmails;
+            addRest(map, rest);                    
         } 
-
+        
         return map;
     }
+
+    //this function spread the rest of quocient through the map
+    public static void addRest(Map<String, Integer> map, int r) {
+        int count = r;       
+        
+        for (String key : map.keySet()) {
+            int newValue = map.get(key);
+            
+            if (count > 0) {
+                map.put(key, newValue + 1);
+                count--;
+                
+            }else
+                break;
+        }
+        
+    }
+
 }
